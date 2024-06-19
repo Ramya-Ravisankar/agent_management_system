@@ -10,7 +10,7 @@ class FinancialAdvisorChat(Command):
     def __init__(self):
         super().__init__()
         self.name = "financial_advisor"
-        self.description = "This agent provides personalized financial advice, offering tailored investment portfolio strategies based on risk tolerance, financial goals, and time horizon. Powered by AI, it analyzes market trends, historical performance, and potential risks to optimize returns while managing volatility."
+        self.description = "This agent provides personalized financial planning, investment portfolio management,market analysis and insights , retirement planning, risk management."
         self.history = []
         load_dotenv()
         API_KEY = os.getenv('OPEN_AI_KEY')
