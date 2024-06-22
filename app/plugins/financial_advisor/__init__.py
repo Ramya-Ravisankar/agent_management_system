@@ -15,9 +15,9 @@ class FinancialAdvisorChat(Command):
         load_dotenv()
         API_KEY = os.getenv('OPEN_AI_KEY')
         # you can try GPT4 but it costs a lot more money than the default 3.5
-        # self.llm = ChatOpenAI(openai_api_key=API_KEY, model="gpt-4-0125-preview")  # Initialize once and reuse
+        self.llm = ChatOpenAI(openai_api_key=API_KEY, model="gpt-4-0125-preview")  # Initialize once and reuse
         # This is default 3.5 chatGPT
-        self.llm = ChatOpenAI(openai_api_key=API_KEY)  # Initialize once and reuse
+        # self.llm = ChatOpenAI(openai_api_key=API_KEY)  # Initialize once and reuse
 
     def calculate_tokens(self, text):
         # More accurate token calculation mimicking OpenAI's approach
@@ -25,7 +25,7 @@ class FinancialAdvisorChat(Command):
 
     def interact_with_ai(self, user_input, character_name):
         # Generate a more conversational and focused prompt
-        prompt_text = "Design an investment portfolio strategy tailored to a client's risk tolerance, financial goals, and time horizon. Provide detailed recommendations on asset allocation, diversification, and specific investment vehicles across various markets (stocks, bonds, real estate, etc.). Consider factors such as historical performance, market trends, and potential risks to maximize returns while minimizing volatility."
+        prompt_text = "Design a bespoke investment portfolio strategy that reflects a client's risk tolerance, financial goals, and time horizon. Include in-depth advice on asset allocation, diversification, and specific investment vehicles across different markets (e.g., stocks, bonds, real estate). Consider historical performance, market trends, and potential risks to optimize returns while minimizing volatility"
         prompt = ChatPromptTemplate.from_messages(self.history + [("system", prompt_text)])
 
         output_parser = StrOutputParser()
